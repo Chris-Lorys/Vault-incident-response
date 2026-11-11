@@ -27,12 +27,12 @@ vault version
 
 ## 2. Configuration et démarrage
 
-Placer le dossier du projet dans `~/vault-incident-response`. La configuration est fournie dans `config/vault.hcl`.
+Placer le dossier du projet dans `~/vault-incident-response`. La configuration est fournie dans `config/vault-laboratoire.hcl`.
 
 ```bash
 cd ~/vault-incident-response
 sudo install -d -m 0700 -o "$(id -un)" -g "$(id -gn)" /opt/vault/data /vault/logs
-vault server -config="$HOME/vault-incident-response/config/vault.hcl"
+vault server -config="$HOME/vault-incident-response/config/vault-laboratoire.hcl"
 ```
 
 Laisser ce terminal ouvert. Dans un deuxième terminal :

@@ -12,7 +12,7 @@ Vault 2.2.1 utilise un stockage fichier dans `/opt/vault/data`. L’API écoute 
 
 Le périphérique d’audit fichier a été activé vers `/vault/logs/audit.log`, puis le moteur KV v2 sous `secret/`. Le secret `secret/prod/db` a été créé avec une valeur de test. La lecture a confirmé la présence du secret en version 1.
 
-Preuves : [statut initialisé](../screenshots/02-vault-initialise-deverrouille.png), [audit](../screenshots/03-audit-active.png), [secret initial](../screenshots/04-secret-initial.png).
+Preuves : [statut initialisé](../screenshots/01-statut-initial-vault.png), [audit](../screenshots/02-activation-audit.png), [secret initial](../screenshots/03-lecture-secret-kv-v1.png).
 
 ## 3. Détection et analyse
 
@@ -28,7 +28,7 @@ Les autres résultats de la recherche comprennent la consultation locale, depuis
 
 Cette entrée constitue l’indicateur de l’exercice. Elle ne prouve ni la copie du stockage ni une extraction de clé. Une requête de lecture seule, sans réponse associée, ne démontre pas non plus qu’elle a réussi. Dans un incident réel, il faudrait corréler les journaux de Vault avec ceux du système, du réseau et de l’outil de sauvegarde. Une copie directe des fichiers peut ne pas apparaître dans l’audit de l’API Vault.
 
-Preuve : [capture recadrée sur l’entrée simulée](../screenshots/06-evenement-suspect.png). Aucun journal complet n’est publié.
+Preuve : [capture recadrée sur l’entrée simulée](../screenshots/04-entree-audit-simulee.png). Aucun journal complet n’est publié.
 
 ## 4. Évaluation et mesures de réponse
 
@@ -44,7 +44,7 @@ La lecture de `secret/prod/db` après rotation a confirmé que la version 1 éta
 
 La nouvelle clé sert aux écritures futures ; les anciennes restent dans le trousseau pour déchiffrer les données antérieures. La rotation ne révoque donc pas rétroactivement la capacité de déchiffrer une sauvegarde déjà volée si l’attaquant en possède aussi les clés nécessaires.
 
-Preuve : [rotation et lecture du secret](../screenshots/07-rotation-cle.png).
+Preuve : [rotation et lecture du secret](../screenshots/05-rotation-cle-chiffrement.png).
 
 ## 6. Modification du mot de passe stocké
 
@@ -52,13 +52,13 @@ Le champ `password` a été mis à jour avec une seconde valeur de test. La lect
 
 Ce contrôle confirme le changement dans Vault. Il ne démontre pas une rotation d’identifiant dans une base réelle, car aucune base n’a été configurée. KV v2 conserve la version 1 ; le changement de valeur ne signifie pas sa destruction.
 
-Preuves : [commande d’écriture et version 2 créée](../screenshots/08a-ecriture-mot-de-passe.png), puis [lecture de la version 2](../screenshots/08-rotation-mot-de-passe.png). Les deux sorties présentent la même date de création et confirment la modification attendue.
+Preuves : [commande d’écriture et version 2 créée](../screenshots/06-ecriture-secret-kv-v2.png), puis [lecture de la version 2](../screenshots/07-lecture-secret-kv-v2.png). Les deux sorties présentent la même date de création et confirment la modification attendue.
 
 ## 7. Vérification finale
 
 Les commandes `vault status` et `vault operator key-status` confirment un coffre-fort initialisé, déverrouillé et utilisant la génération 2. Les lectures avant et après les changements ont réussi. La procédure n’a nécessité aucun redémarrage. Ces contrôles ponctuels ne mesurent pas la disponibilité en continu ni le fonctionnement d’une application cliente.
 
-Preuve : [état final](../screenshots/09-verification-finale.png).
+Preuve : [état final](../screenshots/08-statut-final-vault.png).
 
 ## 8. Correspondance avec les phases NIST
 

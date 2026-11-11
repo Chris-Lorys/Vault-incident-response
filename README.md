@@ -17,19 +17,19 @@ Projet réalisé dans le cadre du cours **8INF882 — Gestion des incidents de s
 
 ### Entrée d’audit simulée
 
-La commande `grep 'key-status' /vault/logs/audit.log` a retrouvé l’entrée injectée pour le TP. La capture est recadrée sur cette entrée. Le [rapport](docs/rapport.md#3-détection-et-analyse) en reproduit les champs et explique comment la distinguer des requêtes locales.
+La commande `grep 'key-status' /vault/logs/audit.log` a retrouvé l’entrée injectée pour le TP. La capture est recadrée sur cette entrée. Le [rapport](docs/rapport-de-reponse-a-incident.md#3-détection-et-analyse) en reproduit les champs et explique comment la distinguer des requêtes locales.
 
-![Entrée d’audit simulée avec l’adresse 203.0.113.200](screenshots/06-evenement-suspect.png)
+![Entrée d’audit simulée avec l’adresse 203.0.113.200](screenshots/04-entree-audit-simulee.png)
 
 ### Rotation de la clé et lecture du secret existant
 
-![Passage du Key Term de 1 à 2 et lecture du secret en version 1](screenshots/07-rotation-cle.png)
+![Passage du Key Term de 1 à 2 et lecture du secret en version 1](screenshots/05-rotation-cle-chiffrement.png)
 
 ### Mise à jour et lecture du secret en version 2
 
-![Écriture du secret en version 2](screenshots/08a-ecriture-mot-de-passe.png)
+![Écriture du secret en version 2](screenshots/06-ecriture-secret-kv-v2.png)
 
-![Lecture du secret en version 2](screenshots/08-rotation-mot-de-passe.png)
+![Lecture du secret en version 2](screenshots/07-lecture-secret-kv-v2.png)
 
 Les valeurs des mots de passe de test sont masquées dans les captures.
 
@@ -41,7 +41,7 @@ La version 2 confirme la mise à jour du secret dans Vault. Le laboratoire s’a
 
 ## Documentation
 
-- [Procédure de reproduction](docs/procedure.md)
-- [Rapport d’analyse et leçons apprises](docs/rapport.md)
-- [Configuration Vault du laboratoire](config/vault.hcl)
+- [Procédure de reproduction](docs/reproduire-le-laboratoire.md)
+- [Rapport d’analyse et leçons apprises](docs/rapport-de-reponse-a-incident.md)
+- [Configuration Vault du laboratoire](config/vault-laboratoire.hcl)
 - [NIST SP 800-61 révision 2, section 3](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
