@@ -1,0 +1,26 @@
+# Secrets et fichiers d'authentification locaux
+.env
+.env.*
+!.env.example
+.vault-token
+initialisation.txt
+initialisation.json
+*unseal*
+*root-token*
+private/
+
+# Stockage et journaux réels : ne pas publier
+data/
+logs/
+*.log
+
+# Binaires et téléchargements
+installation/
+vault
+*.zip
+*_SHA256SUMS
+
+# Fichiers temporaires
+*.swp
+*.tmp
+__pycache__/
