@@ -2,7 +2,7 @@
 
 Le scénario du laboratoire commence par la découverte d’une sauvegarde de Vault copiée sur un serveur externe non sécurisé. Sur une VM Kali, l’audit de Vault a servi à retrouver un indicateur simulé. La réponse a ensuite consisté à renouveler la clé de chiffrement interne et à remplacer le mot de passe stocké dans Vault, avec une vérification de l’accès au secret après chaque opération.
 
-Projet réalisé dans le cadre du cours **8INF882 — Gestion des incidents de sécurité** à l’UQAC, avec **Vault 2.2.1**, un stockage fichier et le moteur de secrets **KV v2**.
+Projet réalisé avec **Vault 2.2.1**, un stockage fichier et le moteur de secrets **KV v2**.
 
 ## Analyse et réponse
 
